@@ -1,0 +1,35 @@
+﻿@model  StudenCourse.Models.CourseModel
+@{
+    ViewBag.Title = "Course";
+}
+
+<h2>Course</h2>
+@{
+    using (Html.BeginForm())
+    {
+
+
+        @Html.LabelFor(model => model.CourseName)
+        @Html.EditorFor(model => model.CourseName)
+        @Html.ValidationMessageFor(model => model.CourseName)
+
+        @Html.LabelFor(model => model.StartDate)
+        @Html.EditorFor(model => model.StartDate)
+        @Html.ValidationMessageFor(model => model.StartDate)
+
+        @Html.LabelFor(model => model.EndDate)
+        @Html.EditorFor(model => model.EndDate)
+        @Html.ValidationMessageFor(model => model.EndDate)
+
+        <br />
+        <div>
+            <br />
+            <input type="submit" value="Add Course" />
+        </div>
+        <br />
+        @Html.ActionLink("Back to Home","Index", "Student")
+    }
+}
+
+
+

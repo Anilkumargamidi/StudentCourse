@@ -1,0 +1,82 @@
+﻿
+@model IEnumerable<StudenCourse.Models.StudentModel>
+@{
+    ViewBag.Title = "Well come";
+}
+
+<h2>Student info</h2>
+
+<table border="1">
+
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Surname</th>
+            <th>Course Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+        </tr>
+    </thead>
+    @if (Model != null)
+    {
+        <tbody>
+
+
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.FirstName</td>
+
+                    <td>@item.SurName</td>
+                    <td>@item.CousreName</td>
+                    <td>@item.StartDate</td>
+                    <td>@item.EndDate</td>
+                </tr>
+
+            }
+
+
+        </tbody>
+    }
+    else
+    {
+        <tbody>
+            <tr><td colspan="5">No Date found. Please link Student with respective Course.</td></tr>
+        </tbody>
+    }
+
+
+</table>
+
+<br />
+<br />
+
+<h2>Link Student with Course</h2>
+<div>
+
+
+
+    <select style="display:inline;" id="ddlstd">
+        <option>Student 1</option>
+    </select>
+    &nbsp;&nbsp;
+    <select style="display:inline;" id="ddlcourse">
+        <option>course 1</option>
+    </select>
+</div>
+<br />
+
+<input type="hidden" value="@Url.Action("GetStudent","Student")" id="hdnStdurl" />
+<input type="hidden" value="@Url.Action("GetCourse","Course")" id="hdncururl" />
+@*<input type="hidden" value="@Url.Action("GetCourse","Student")" id="hdncururl" />*@
+<input type="button" value="AddCourse" onclick="Addlink()"  />
+
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    $(function () {
+        Test();
+    });
+</script>
